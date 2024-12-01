@@ -27,8 +27,9 @@ public class Patient {
     @Column(nullable = false)
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Appointment> appointmentEntities = new ArrayList<>();
+//    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonManagedReference
+//    private List<Appointment> appointments = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -62,11 +63,11 @@ public class Patient {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public List<Appointment> getAppointments() {
-        return appointmentEntities;
-    }
-
-    public void setAppointments(List<Appointment> appointmentEntities) {
-        this.appointmentEntities = appointmentEntities;
-    }
+//    public List<Appointment> getAppointments() {
+//        return appointments;
+//    }
+//
+//    public void setAppointments(List<Appointment> appointments) {
+//        this.appointments = appointments;
+//    }
 }

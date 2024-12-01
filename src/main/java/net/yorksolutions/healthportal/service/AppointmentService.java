@@ -39,7 +39,7 @@ public class AppointmentService {
         }
 
         //find patient obj  by id
-        Optional<Patient> patientOptional = this.patientRepository.findById(appointmentDTO.getDoctorId());
+        Optional<Patient> patientOptional = this.patientRepository.findById(appointmentDTO.getPatientId());
         if(patientOptional.isEmpty())
         {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -55,5 +55,9 @@ public class AppointmentService {
 
     public List<Appointment> getAppointments() {
         return appointmentRepository.findAll();
+    }
+
+    public List<Appointment> getAppointmentsByPatientId(Long patientId) {
+        return appointmentRepository.findByPatientId(patientId);
     }
 }

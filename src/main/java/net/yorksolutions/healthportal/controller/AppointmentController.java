@@ -28,6 +28,10 @@ public class AppointmentController {
         return this.appointmentService.getAppointments();
     }
 
+    public List<Appointment> getAppointmentsByPatientId(@RequestParam Long patientId) {
+        return this.appointmentService.getAppointmentsByPatientId(patientId);
+    }
+
     @PostMapping
     public Appointment createAppointment(@RequestBody AppointmentDTO appointmentDTO) {
         return this.appointmentService.createAppointment(appointmentDTO);

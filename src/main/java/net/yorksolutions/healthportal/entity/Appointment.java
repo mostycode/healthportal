@@ -1,6 +1,7 @@
 package net.yorksolutions.healthportal.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -20,7 +21,7 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn(name = "doctor_id", nullable = false)
-    @JsonBackReference
+//    @JsonManagedReference
     private Doctor doctor;
 
     private LocalDateTime appointmentDateTime;

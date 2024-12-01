@@ -1,5 +1,6 @@
 package net.yorksolutions.healthportal.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -26,6 +27,7 @@ public class Doctor {
     private Specialization specialization;
 
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonBackReference
     private List<Appointment> appointments = new ArrayList<>();
 
     public Long getId() {
