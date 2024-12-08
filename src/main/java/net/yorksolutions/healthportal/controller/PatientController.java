@@ -2,14 +2,14 @@ package net.yorksolutions.healthportal.controller;
 
 import net.yorksolutions.healthportal.entity.Patient;
 import net.yorksolutions.healthportal.service.PatientService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
+@RequestMapping("/patients")
+@CrossOrigin(origins = "http://localhost:5173")
 public class PatientController {
 
     private final PatientService patientService;
@@ -18,14 +18,28 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping("/patients")
+    @GetMapping
     public List<Patient> getAllPatients() {
         return this.patientService.getAllPatients();
     }
 
-    @PostMapping("/patients")
+    @GetMapping("/e")
+    public Patient findPatientByEmail(@RequestParam String email) {
+        return this.patientService.findPatientByEmail(email);
+    }
+
+    @GetMapping("/search")
+    public List<Patient> searchPatients(@RequestParam String firstName,
+                                        @RequestParam String lastName,
+                                        @RequestParam LocalDate dateOfBirth) {
+        return this.patientService.searchPatients(firstName, lastName, dateOfBirth);
+    }
+
+
+    @PostMapping
     public Patient addPatient(@RequestBody Patient patient) {
-        return this.patientService.addPatient(patient);
+        System.out.println("request received: " + patient);
+        return patientService.addPatient(patient);
     }
 
 }

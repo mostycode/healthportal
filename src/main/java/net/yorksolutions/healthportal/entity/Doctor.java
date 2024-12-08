@@ -23,12 +23,23 @@ public class Doctor {
 
     @ManyToOne
     @JoinColumn(name = "specialization_id", nullable = false)
-    @JsonManagedReference
+//    @JsonManagedReference
     private Specialization specialization;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonBackReference
-    private List<Appointment> appointments = new ArrayList<>();
+//    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
+
+    public Doctor() {
+        //
+    }
+
+    public Doctor(String firstName, String lastName, Specialization specialization) {
+        this.firstName = firstName;
+        LastName = lastName;
+        this.specialization = specialization;
+    }
+
+    ////    @JsonBackReference
+//    private List<Appointment> appointments = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -62,11 +73,11 @@ public class Doctor {
         this.specialization = specialization;
     }
 
-    public List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    public void setAppointments(List<Appointment> appointments) {
-        this.appointments = appointments;
-    }
+//    public List<Appointment> getAppointments() {
+//        return appointments;
+//    }
+//
+//    public void setAppointments(List<Appointment> appointments) {
+//        this.appointments = appointments;
+//    }
 }

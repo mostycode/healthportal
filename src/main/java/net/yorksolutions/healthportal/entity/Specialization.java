@@ -16,9 +16,9 @@ public class Specialization {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "specialization", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<Doctor> doctors;
+//    @OneToMany(mappedBy = "specialization", cascade = CascadeType.ALL)
+//    @JsonBackReference
+//    private List<Doctor> doctors;
 
     public Long getId() {
         return id;
@@ -36,11 +36,11 @@ public class Specialization {
         this.name = name;
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
-    }
+//    public List<Doctor> getDoctors() {
+//        return doctors;
+//    }
+//
+//    public void setDoctors(List<Doctor> doctors) {
+//        this.doctors = doctors;
+//    }
 }

@@ -18,6 +18,9 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String email;
+
     @Column(nullable = false)
     private String firstName;
 
@@ -30,6 +33,16 @@ public class Patient {
 //    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
 //    @JsonManagedReference
 //    private List<Appointment> appointments = new ArrayList<>();
+
+    public Patient() {
+    }
+
+    public Patient(String email, String firstName, String lastName, LocalDate dateOfBirth) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+    }
 
     public Long getId() {
         return id;
@@ -59,11 +72,19 @@ public class Patient {
         return dateOfBirth;
     }
 
-    public void setDob(LocalDate dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
-//    public List<Appointment> getAppointments() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    //    public List<Appointment> getAppointments() {
 //        return appointments;
 //    }
 //

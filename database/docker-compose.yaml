@@ -9,7 +9,7 @@ services:
     # this maps the real computers "5432" port to the simulated computers port "5432"
     # this allows the simulated database to talk to the outside world
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
 
     # tell the postgres server how to configure itself on startup
     environment:
