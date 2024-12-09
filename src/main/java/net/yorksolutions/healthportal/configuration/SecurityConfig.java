@@ -23,7 +23,7 @@ public class SecurityConfig {
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 // https://stackoverflow.com/a/74521360/65681
                 .csrfTokenRequestHandler(new CsrfTokenRequestAttributeHandler())
-                .ignoringRequestMatchers("/appointments") // permit public access for POST, PUT, DELETE
+                .ignoringRequestMatchers("/appointments/**", "/patients", "/doctors", "/specializations") // permit public access for POST, PUT, DELETE
         );
         http.addFilterAfter(new CookieCsrfFilter(), BasicAuthenticationFilter.class);
         http.oauth2Login(oauth2 -> oauth2

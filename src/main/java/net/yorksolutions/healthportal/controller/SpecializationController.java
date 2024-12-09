@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/specializations")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SpecializationController {
 
     private SpecializationService specializationService;
